@@ -1,0 +1,192 @@
+/* Start Variables */
+:root {
+    --main-color: #fff;
+    --main-curve: 10px;
+}
+
+/* End Variables */
+/* Start Global Rules */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Work Sans", sans-serif;
+    background-image: url(../imgs/hero-section-img.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Small */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+/* Medium */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+/* Large */
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* End Global Rules */
+/* Main Section */
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}
+
+.card {
+    width: 420px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: var(--main-curve);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border-radius: var(--main-curve);
+    padding: 30px;
+
+}
+
+.card h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.card .input-box {
+    width: 100%;
+    margin: 15px 0;
+    position: relative;
+}
+
+.success {
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    color: black;
+    background-color: #00800052;
+    padding: 13px;
+    margin: 3px;
+    text-align: center;
+}
+
+.error {
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    color: black;
+    background-color: #ff00004d;
+    padding: 13px;
+    margin: 3px;
+    text-align: center;
+}
+
+.flx-space {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.closebtn {
+    float: right;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card .input-box input {
+    width: 100%;
+    height: 100%;
+    outline-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: black;
+    background-color: #ffffff40;
+    padding: 20px 45px 20px 20px;
+}
+
+.card .input-box input::placeholder {
+    color: black;
+    color: rgb(75, 72, 72);
+    font-weight: 500;
+}
+
+.card .input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.card .btn {
+    width: 100%;
+    height: 45px;
+    background-color: var(--main-color);
+    border: none;
+    outline-color: transparent;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.card .btn:hover {
+    background-color: black;
+    color: var(--main-color);
+}
+
+.card .extra-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.extra-link p {
+    font-weight: 500;
+}
+
+.extra-link p a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.extra-link p a:hover {
+    text-decoration: underline;
+}
+
+/* End Main Section *
