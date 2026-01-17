@@ -1,0 +1,96 @@
+1) SELECT w.warehouse_id,w.warehouse_city,COUNT(s.order_id) AS countOfOrders FROM warehouse AS w 
+LEFT JOIN shipment AS s ON w.warehouse_id = s.warehouse_id
+GROUP BY warehouse_id;
+
+
+warehouse_id	warehouse_city	countOfOrders	
+1	Geelong	3	
+2	Grande Prairie	2	
+3	Lede	4	
+4	Oostende	3	
+5	Kumluca	4	
+6	Arica	7	
+7	Midlands	3	
+8	Aulnay-sous-Bois	7	
+9	Soria	0	
+10	Rouvroy	2	
+11	Precenicco	5	
+12	Sesto al Reghena	3	
+13	Edmundston	1	
+14	Beho	2	
+15	Aisén	4	
+16	Essex	8	
+17	Merritt	4	
+18	Ellikom	4	
+19	l'Escaill re	3	
+20	Houdemont	0	
+21	Enterprise	3	
+22	Queilén	2	
+23	Southwell	1	
+24	Recoleta	2	
+25	Panchià	5	
+
+2) SELECT c.customer_name, COUNT(o.order_id) AS countOfOrders FROM customer AS c 
+LEFT JOIN `order` AS o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id;
+
+
+customer_name	countOfOrders	
+Stewart Tyler	2	
+Christen Guerrero	1	
+Vaughan Ellison	0	
+Keefe Good	5	
+Jillian Austin	0	
+Chadwick Hogan	2	
+Walter Burton	4	
+Mara Hudson	3	
+Anika Gonzales	2	
+Wang Browning	2	
+Malachi Baxter	4	
+Tyrone Sullivan	0	
+Deanna Morales	3	
+Cyrus Saunders	3	
+Lilah Sanchez	1	
+Echo Bolton	2	
+Channing Lynn	2	
+Jeanette Hester	1	
+Russell Benjamin	0	
+Nita Branch	2	
+Ferris Pollard	2	
+Amal Marsh	1	
+Philip Cain	0	
+Ferris Foley	2	
+Wang Robertson	2	
+
+3) SELECT item_id AS unorderedItemIds FROM item
+WHERE item_id NOT IN (SELECT item_id FROM order_item);
+
+
+unorderedItemIds	
+3	
+5	
+9	
+10	
+14	
+16	
+24	
+28	
+34	
+42	
+51	
+55	
+56	
+73	
+75	
+78	
+80	
+81	
+84	
+88	
+89	
+92	
+94	
+99	
+109	
+
+

@@ -1,0 +1,142 @@
+1) SELECT s.student_name
+FROM student AS s
+JOIN enrolled AS e ON s.student_id = e.student_id
+JOIN semester_course AS sc ON e.course_code = sc.course_code AND e.quarter = sc.quarter AND e.year = sc.year
+WHERE s.level = 'SR' AND sc.prof_id = 1;
+
+
+student_name	
+Charles Harris	
+Charles Harris	
+Maria White	
+Charles Harris	
+
+2) SELECT s.student_name, c.name AS course_name
+FROM student AS s
+LEFT JOIN enrolled AS e ON s.student_id = e.student_id
+LEFT JOIN course AS c ON e.course_code = c.course_code;
+
+
+student_name	course_name	
+Maria White	Data Structures	
+Maria White	Data Structures	
+Maria White	Archaeology of the Incas	
+Maria White	Aviation Accident Investigation	
+Charles Harris	Data Structures	
+Charles Harris	Database Systems	
+Charles Harris	Operating System Design	
+Charles Harris	Air Quality Engineering	
+Susan Martin	Database Systems	
+Susan Martin	Operating System Design	
+Susan Martin	Archaeology of the Incas	
+Joseph Thompson	Data Structures	
+Joseph Thompson	American Political Parties	
+Joseph Thompson	Social Cognition	
+Christopher Garcia	Operating System Design	
+Angela Martinez	Data Structures	
+Thomas Robinson	Database Systems	
+Thomas Robinson	Introductory Latin	
+Margaret Clark	Data Structures	
+Margaret Clark	Operating System Design	
+Margaret Clark	Archaeology of the Incas	
+Margaret Clark	Aviation Accident Investigation	
+Margaret Clark	Air Quality Engineering	
+Juan Rodriguez	Data Structures	
+Juan Rodriguez	Archaeology of the Incas	
+Juan Rodriguez	Aviation Accident Investigation	
+Dorthy Lewis	Data Structures	
+Dorthy Lewis	Database Systems	
+Dorthy Lewis	Aviation Accident Investigation	
+Dorthy Lewis	Air Quality Engineering	
+Dorthy Lewis	Introductory Latin	
+Daniel Lee	Data Structures	
+Daniel Lee	Archaeology of the Incas	
+Daniel Lee	Air Quality Engineering	
+Daniel Lee	Introductory Latin	
+Daniel Lee	American Political Parties	
+Lisa Walker	Data Structures	
+Lisa Walker	Archaeology of the Incas	
+Lisa Walker	American Political Parties	
+Lisa Walker	Social Cognition	
+Paul Hall	Data Structures	
+Paul Hall	Operating System Design	
+Paul Hall	Social Cognition	
+Nancy Allen	Operating System Design	
+Nancy Allen	Aviation Accident Investigation	
+Mark Young	Data Structures	
+Mark Young	Database Systems	
+Mark Young	Operating System Design	
+Mark Young	Aviation Accident Investigation	
+Mark Young	Air Quality Engineering	
+Luis Hernandez	Data Structures	
+Luis Hernandez	Data Structures	
+Luis Hernandez	Data Structures	
+Luis Hernandez	Database Systems	
+Luis Hernandez	Operating System Design	
+Luis Hernandez	Air Quality Engineering	
+Donald King	NULL	
+George Wright	NULL	
+
+3) SELECT p.prof_name 
+FROM professor AS p
+JOIN semester_course AS sc ON p.prof_id = sc.prof_id 
+LEFT JOIN enrolled AS e ON sc.course_code = e.course_code AND sc.quarter = e.quarter AND sc.year = e.year 
+GROUP BY p.prof_id, p.prof_name 
+HAVING COUNT(DISTINCT e.student_id) < 5 OR COUNT(DISTINCT e.student_id) IS NULL;
+
+
+prof_name	
+Mary Johnson	
+John Williams	
+Patricia Jones	
+
+4) SELECT s.student_name
+FROM student AS s
+JOIN enrolled AS e ON s.student_id = e.student_id
+JOIN semester_course AS sc ON e.course_code = sc.course_code
+WHERE sc.prof_id = 2
+GROUP BY s.student_id, s.student_name
+HAVING COUNT(DISTINCT sc.course_code) = (
+    SELECT COUNT(course_code)
+    FROM semester_course
+    WHERE prof_id = 2
+);
+
+
+student_name	
+Joseph Thompson	
+Lisa Walker	
+Paul Hall	
+
+5) SELECT p.prof_id, p.prof_name
+FROM professor as p
+LEFT JOIN semester_course as sc
+ON p.prof_id = sc.prof_id
+WHERE p.dept_id IN (1, 2, 3, 4)
+GROUP BY p.prof_id, p.prof_name
+HAVING COUNT(sc.course_code) < 2;
+
+
+prof_id	prof_name	
+3	Mary Johnson	
+5	Patricia Jones	
+7	Robert Brown	
+
+6) SELECT c.name AS course_name, c.course_code, p.prof_name, p.prof_id
+FROM course AS c
+JOIN semester_course AS sc ON c.course_code = sc.course_code
+JOIN professor AS p ON sc.prof_id = p.prof_id
+GROUP BY c.course_code, p.prof_id
+HAVING COUNT(sc.course_code) >= 2;
+
+
+course_name	course_code	prof_name	prof_id	
+Data Structures	CC10	Ivana Teach	1	
+Operating System Design	CC12	Michael Miller	6	
+Air Quality Engineering	CC15	Ivana Teach	1	
+
+
+
+
+
+
